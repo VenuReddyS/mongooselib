@@ -97,6 +97,13 @@ router.patch("/updateOne",function(req,res){
     res.send(err)
   })
 })
-
+//by params.........................
+router.post('/findbyid', function (req, res, next) {
+  mongoose.models[req.params.model].find(req.params._id).then((docs) => {
+    res.send(docs)
+  }).catch((err) => {
+    res.send(err)
+  })
+})
 
 module.exports = router;
