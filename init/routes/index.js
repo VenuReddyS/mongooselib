@@ -16,7 +16,7 @@ router.post('/finds',function (req,res,next){
 })
 //find and filter
 router.post('/find',function (req,res,next){
-  mongoose.models[req.body.model].find(req.body.filter).then((docs)=>{
+  mongoose.models[req.body.model].find([req.body]).then((docs)=>{
     res.send(docs)
   }).catch((err)=>{
     res.send(err)
@@ -52,6 +52,15 @@ router.patch('/delete',function (req,res,next){
     res.send(docs)
   }).catch((err)=>{
     res.send(err)                           //not completed not working while we taking delete in axios
+  })
+})
+//findbyIdand delete
+router.post("/findByIdAndDelete",function(req,res){
+ 
+  mongoose.models[req.body.model].findByIdAndDelete(req.body,{new:true}).then((docs)=>{
+    res.send(docs)
+  }).catch((err)=>{
+    res.send(err)
   })
 })
 //replace
