@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-mongoose.connect('mongodb+srv://ranguvenugopal2455:venu2455@cluster0.hbbytsx.mongodb.net',{
+mongoose.connect('mongodb+srv://ranguvenugopal2455:venu2455@cluster0.hbbytsx.mongodb.net/auth',{
     useNewUrlParser:true
 }).then(()=>console.log('mongooseDB is connected'))
 .catch(err=>console.log(err))
