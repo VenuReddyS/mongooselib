@@ -16,7 +16,7 @@ router.post('/finds',function (req,res,next){
 })
 //find and filter
 router.post('/find',function (req,res,next){
-  mongoose.models[req.body.model].find([req.body]).then((docs)=>{
+  mongoose.models[req.body.model].findOne([req.body.create]).then((docs)=>{
     res.send(docs)
   }).catch((err)=>{
     res.send(err)
@@ -24,10 +24,10 @@ router.post('/find',function (req,res,next){
 })
 // create
 router.post('/create',function (req,res,next){
-  mongoose.models[req.body.model].create(req.body.create).then((docs)=>{
-    res.send(docs)
+  mongoose.models[req.body.model].create(req.body).then((docs)=>{
+   return res.send(docs)
   }).catch((err)=>{
-    res.send(err)
+    return res.send(err)
   })
 })
 //findbyId
